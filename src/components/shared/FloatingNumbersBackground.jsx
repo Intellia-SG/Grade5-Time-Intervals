@@ -6,7 +6,8 @@ const TIME_SYMBOLS = [
   '12h', '+90m', '00:00', '+30m', '18:45', ':15', '+5m', '10:00',
   '+2h', '7:30', ':45', '12', '60', '24', '15', '30', '45',
   '⏰', '⏱️', '⌛', '🕒', 'AM', 'PM', '06:00', '+10m', '14:30',
-  ':00', '120m', '+1h', '09:15', '23:59', '+35m'
+  ':00', '120m', '+1h', '09:15', '23:59', '+35m', '07:45', '+50m',
+  '15:00', '3600s', ':20', '+40m', '11:11', '04:20', '+25m'
 ];
 
 const COLOR_CLASSES = [
@@ -19,20 +20,31 @@ const COLOR_CLASSES = [
   'text-emerald-400',
   'text-sky-300',
   'text-rose-400',
+  'text-amber-300',
+  'text-cyan-300',
 ];
 
 export function FloatingNumbersBackground() {
-  // Generate 40 floating items spread evenly across the viewport
+  // Generate 50 items perfectly distributed vertically and horizontally across full screen
   const items = useMemo(() => {
-    return Array.from({ length: 40 }).map((_, i) => {
+    const totalItems = 50;
+    return Array.from({ length: totalItems }).map((_, i) => {
       const symbol = TIME_SYMBOLS[i % TIME_SYMBOLS.length];
       const color = COLOR_CLASSES[i % COLOR_CLASSES.length];
-      const left = ((i * 2.45 + (i % 7) * 9.5) % 94) + 3; // Spread across 3% to 97% width
-      const duration = 14 + (i % 8) * 3.5; // 14s to 38.5s float duration
-      const delay = -((i * 3.7) % duration); // Negative delay to pre-populate entire screen on load
-      const fontSize = 16 + (i % 6) * 6; // 16px to 46px
+      
+      // Horizontal distribution (4% to 96%)
+      const left = ((i * 7.7 + (i % 7) * 11) % 92) + 4;
+      
+      // Float animation speed (18s to 38s)
+      const duration = 18 + (i % 8) * 2.5; 
+      
+      // CRITICAL FIX: Distribute initial vertical progress evenly across full height (0% to 100%)
+      const progressFraction = i / totalItems;
+      const delay = -(progressFraction * duration);
+      
+      const fontSize = 16 + (i % 6) * 5; // 16px to 41px font size
       const rotation = (i % 2 === 0 ? 1 : -1) * (8 + (i % 5) * 6); // -32deg to +32deg rotation
-      const targetOpacity = 0.25 + (i % 4) * 0.08; // 0.25 to 0.49 crisp opacity
+      const targetOpacity = 0.3 + (i % 4) * 0.08; // 0.3 to 0.54 vibrant opacity
       const isGlowing = i % 2 === 0;
 
       return {
@@ -61,13 +73,13 @@ export function FloatingNumbersBackground() {
           className={`absolute font-mono font-extrabold tracking-wider ${item.color} transition-opacity duration-1000`}
           style={{
             left: item.left,
-            bottom: '-12%',
+            bottom: '0px',
             fontSize: item.fontSize,
             animation: `floatUp ${item.duration} linear infinite`,
             animationDelay: item.delay,
             '--target-opacity': item.targetOpacity,
             '--target-rotation': item.rotation,
-            filter: item.isGlowing ? 'drop-shadow(0 0 8px currentColor)' : 'drop-shadow(0 0 3px rgba(0,0,0,0.5))',
+            filter: item.isGlowing ? 'drop-shadow(0 0 8px currentColor)' : 'drop-shadow(0 0 3px rgba(0,0,0,0.6))',
           }}
         >
           <div

@@ -108,17 +108,17 @@
 /* Floating background numbers animation */
 @keyframes floatUp {
   0% {
-    transform: translateY(115vh) rotate(0deg) scale(0.85);
+    transform: translateY(105vh) rotate(0deg) scale(0.85);
     opacity: 0;
   }
-  10% {
-    opacity: var(--target-opacity, 0.35);
+  5% {
+    opacity: var(--target-opacity, 0.4);
   }
-  90% {
-    opacity: var(--target-opacity, 0.35);
+  95% {
+    opacity: var(--target-opacity, 0.4);
   }
   100% {
-    transform: translateY(-20vh) rotate(var(--target-rotation, 15deg)) scale(1.1);
+    transform: translateY(-110vh) rotate(var(--target-rotation, 15deg)) scale(1.1);
     opacity: 0;
   }
 }
