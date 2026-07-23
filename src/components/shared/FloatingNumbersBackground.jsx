@@ -1,37 +1,39 @@
 import React, { useMemo } from 'react';
 
-// Time intervals and math symbols relevant to Grade 5 Time Interval learning
+// Time intervals, clock symbols & Grade 5 time digits
 const TIME_SYMBOLS = [
   '12:00', '+15m', '08:30', '60m', '24h', '+45m', ':30', '03:15',
   '12h', '+90m', '00:00', '+30m', '18:45', ':15', '+5m', '10:00',
   '+2h', '7:30', ':45', '12', '60', '24', '15', '30', '45',
-  '⏰', '⏱️', '⌛', '🕒', 'AM', 'PM'
+  '⏰', '⏱️', '⌛', '🕒', 'AM', 'PM', '06:00', '+10m', '14:30',
+  ':00', '120m', '+1h', '09:15', '23:59', '+35m'
 ];
 
 const COLOR_CLASSES = [
-  'text-amber-400/20',
-  'text-cyan-400/20',
-  'text-indigo-400/25',
-  'text-teal-400/20',
-  'text-purple-400/20',
-  'text-yellow-300/15',
-  'text-blue-400/20',
+  'text-amber-400',
+  'text-cyan-400',
+  'text-teal-300',
+  'text-indigo-300',
+  'text-purple-400',
+  'text-yellow-300',
+  'text-emerald-400',
+  'text-sky-300',
+  'text-rose-400',
 ];
 
 export function FloatingNumbersBackground() {
-  // Generate floating items with deterministic variance for pleasant visual balance
+  // Generate 40 floating items spread evenly across the viewport
   const items = useMemo(() => {
-    return Array.from({ length: 32 }).map((_, i) => {
+    return Array.from({ length: 40 }).map((_, i) => {
       const symbol = TIME_SYMBOLS[i % TIME_SYMBOLS.length];
       const color = COLOR_CLASSES[i % COLOR_CLASSES.length];
-      const left = ((i * 3.1 + (i % 7) * 11) % 94) + 3; // Spread evenly 3% to 97%
-      const duration = 16 + (i % 9) * 3; // 16s to 40s duration
-      const delay = -((i * 4.7) % duration); // Negative delay so screen starts pre-filled
-      const fontSize = 14 + (i % 5) * 6; // 14px to 38px
-      const rotation = (i % 2 === 0 ? 1 : -1) * (10 + (i % 6) * 5); // -35deg to 35deg
-      const targetOpacity = 0.12 + (i % 4) * 0.05; // 0.12 to 0.27 opacity
-      const blur = i % 4 === 0 ? 'blur-[1px]' : i % 7 === 0 ? 'blur-[2px]' : '';
-      const isGlowing = i % 3 === 0;
+      const left = ((i * 2.45 + (i % 7) * 9.5) % 94) + 3; // Spread across 3% to 97% width
+      const duration = 14 + (i % 8) * 3.5; // 14s to 38.5s float duration
+      const delay = -((i * 3.7) % duration); // Negative delay to pre-populate entire screen on load
+      const fontSize = 16 + (i % 6) * 6; // 16px to 46px
+      const rotation = (i % 2 === 0 ? 1 : -1) * (8 + (i % 5) * 6); // -32deg to +32deg rotation
+      const targetOpacity = 0.25 + (i % 4) * 0.08; // 0.25 to 0.49 crisp opacity
+      const isGlowing = i % 2 === 0;
 
       return {
         id: i,
@@ -43,7 +45,6 @@ export function FloatingNumbersBackground() {
         fontSize: `${fontSize}px`,
         rotation: `${rotation}deg`,
         targetOpacity,
-        blur,
         isGlowing,
       };
     });
@@ -57,21 +58,21 @@ export function FloatingNumbersBackground() {
       {items.map((item) => (
         <div
           key={item.id}
-          className={`absolute font-mono font-bold tracking-wider ${item.color} ${item.blur} transition-opacity duration-1000`}
+          className={`absolute font-mono font-extrabold tracking-wider ${item.color} transition-opacity duration-1000`}
           style={{
             left: item.left,
-            bottom: '-10%',
+            bottom: '-12%',
             fontSize: item.fontSize,
             animation: `floatUp ${item.duration} linear infinite`,
             animationDelay: item.delay,
             '--target-opacity': item.targetOpacity,
             '--target-rotation': item.rotation,
-            textShadow: item.isGlowing ? '0 0 10px currentColor' : 'none',
+            filter: item.isGlowing ? 'drop-shadow(0 0 8px currentColor)' : 'drop-shadow(0 0 3px rgba(0,0,0,0.5))',
           }}
         >
           <div
             style={{
-              animation: `sway ${6 + (item.id % 4) * 2}s ease-in-out infinite alternate`,
+              animation: `sway ${5 + (item.id % 4) * 2}s ease-in-out infinite alternate`,
             }}
           >
             {item.symbol}
