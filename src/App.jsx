@@ -9,6 +9,7 @@ import { PlayPhase } from './components/phases/PlayPhase.jsx';
 import { ReflectPhase } from './components/phases/ReflectPhase.jsx';
 import { FeedbackOverlay } from './components/shared/FeedbackOverlay.jsx';
 import { BadgePanel } from './components/gamification/BadgePanel.jsx';
+import { FloatingNumbersBackground } from './components/shared/FloatingNumbersBackground.jsx';
 
 import { calcXP, calcTotalStars } from './utils/scoring.js';
 import { checkNewBadges } from './utils/badgeEngine.js';
@@ -143,7 +144,10 @@ export function App() {
   }, [state, setSavedSession]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-nunito selection:bg-cyan-500 selection:text-white pb-16">
+    <div className="relative min-h-screen bg-slate-950 text-slate-100 flex flex-col font-nunito selection:bg-cyan-500 selection:text-white pb-16 overflow-hidden">
+      {/* Background Floating Math & Time Numbers */}
+      <FloatingNumbersBackground />
+
       {/* Top Navigation Bar */}
       <ProgressMap
         currentPhase={state.phase}
