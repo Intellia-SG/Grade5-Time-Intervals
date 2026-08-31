@@ -84,7 +84,7 @@ export function PlayPhase({
       {/* Header */}
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 shadow">
-          <Sparkles className="w-4 h-4 text-cyan-400" /> Phase 4 — INTELLIPLAY™ CHALLENGE
+          <Sparkles className="w-4 h-4 text-cyan-400" /> Phase 4 — PRACTICE PHASE (INTELLIPLAY™)
         </span>
         <h2 className="text-2xl md:text-3xl font-bold font-fredoka text-white flex items-center gap-2">
           <span>{activeWorldObj.flag}</span>

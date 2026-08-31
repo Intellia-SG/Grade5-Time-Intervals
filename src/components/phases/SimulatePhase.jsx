@@ -97,7 +97,7 @@ export function SimulatePhase({ onNext, onUpdateStations, completedStations = [f
           }}
           className="py-3.5 px-8 rounded-2xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 text-slate-950 font-black font-fredoka text-base shadow-2xl animate-bounce-short flex items-center gap-2"
         >
-          <span>Unlock Play Phase (Global Challenges)</span>
+          <span>Unlock Practice Phase (Global Challenges)</span>
           <ArrowRight className="w-5 h-5" />
         </button>
       )}

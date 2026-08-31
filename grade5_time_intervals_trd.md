@@ -918,7 +918,7 @@ export const BADGES = [
   {
     id: 'interval_champion',
     label: '🥇 Interval Champion',
-    description: 'Score 80%+ in Play phase',
+    description: 'Score 80%+ in Practice phase',
     condition: (s) => {
       const totalCorrect = s.worldScores.reduce((sum, ws) => sum + (ws || 0), 0);
       return totalCorrect >= 80;

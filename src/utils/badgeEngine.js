@@ -21,7 +21,7 @@ export const ALL_BADGES = [
     id: 'interval_champion',
     title: 'Interval Champion',
     icon: '🥇',
-    description: 'Achieve an 80%+ total score in the Play challenge',
+    description: 'Achieve an 80%+ total score in the Practice challenge',
     rarity: 'Rare'
   },
   {
@@ -101,7 +101,7 @@ export function checkNewBadges(gameState) {
     unlock('sharp_eye');
   }
 
-  // 7. Interval Champion: Total play score >= 80%
+  // 7. Interval Champion: Total practice score >= 80%
   const totalAttempted = gameState.worldScores?.filter(s => s !== null).length || 0;
   if (totalAttempted >= 5) {
     const totalScore = gameState.worldScores.reduce((a, b) => (a || 0) + (b || 0), 0);

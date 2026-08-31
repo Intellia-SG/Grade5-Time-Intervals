@@ -8,7 +8,7 @@ export function IntroScreen({ onStart, phaseComplete = {} }) {
     { icon: '🤔', name: 'Wonder', desc: 'A time mystery!' },
     { icon: '📖', name: 'Story', desc: 'Global Explorers Club' },
     { icon: '🧪', name: 'Simulate', desc: '3 clock stations' },
-    { icon: '🎮', name: 'Play', desc: '100 challenges' },
+    { icon: '🎮', name: 'Practice', desc: '100 challenges' },
     { icon: '📓', name: 'Reflect', desc: 'Quiz & review' }
   ];
 

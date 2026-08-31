@@ -14,7 +14,7 @@ export function ProgressMap({
     { id: 'wonder', name: 'Wonder', label: '2' },
     { id: 'story', name: 'Story', label: '3' },
     { id: 'simulate', name: 'Simulate', label: '4' },
-    { id: 'play', name: 'Play', label: '5' },
+    { id: 'play', name: 'Practice', label: '5' },
     { id: 'reflect', name: 'Reflect', label: '6' }
   ];
 

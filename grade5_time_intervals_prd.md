@@ -23,7 +23,7 @@ Audio narration follows the **ElevenLabs pipeline** documented in `audio_generat
 
 The lesson follows a global, multicultural narrative featuring students from around the world (John, Mike, Sarah, Emma, Liam, Sofia, Noah, Aisha, Carlos, Yuki, Priya, Fatima, Diego) as they travel between famous world landmarks, using clocks, timetables, and schedules to solve real travel and school-life problems — reinforcing that time intervals matter everywhere on Earth.
 
-The module follows Intellia's proven **6-phase learner journey**: INTRO → WONDER → STORY → SIMULATE → PLAY → REFLECT.
+The module follows Intellia's proven **6-phase learner journey**: INTRO → WONDER → STORY → SIMULATE → PRACTICE → REFLECT.
 
 ---
 
@@ -41,7 +41,7 @@ To make elapsed time and time-interval reasoning feel like a real adventure — 
 | Score Achievement | Average challenge score ≥75% on first attempt |
 | Session Duration | Average engagement ≥18 minutes per session |
 | Curriculum Alignment | 100% aligned to global Grade 5 measurement & time standards |
-| Phase Progression | ≥80% reach Play phase in a single session |
+| Phase Progression | ≥80% reach Practice phase in a single session |
 | Simulation Interaction Rate | ≥95% attempt all 3 simulation stations |
 | Randomization Integrity | 0% repeated question order across sessions |
 
@@ -174,7 +174,7 @@ To make elapsed time and time-interval reasoning feel like a real adventure — 
                                      │
                                      ▼
 ┌────────────────────────────────────────────────────────────────────────────┐
-│ PHASE 4 — PLAY (≈7–9 min)                                                  │
+│ PHASE 4 — PRACTICE (≈7–9 min)                                              │
 │                                                                             │
 │ IntelliPlay™ Level: 100 randomized questions across 10 worlds             │
 │ (each world = a real-world global landmark)                              │
@@ -337,7 +337,7 @@ All questions use globally recognized time-interval vocabulary and notation:
 
 - 🏅 **"Time Traveler"** — Complete Wonder + Story phases
 - 🥈 **"Clock Builder"** — Complete all 3 Simulation stations
-- 🥇 **"Interval Champion"** — Score ≥80% on Play phase
+- 🥇 **"Interval Champion"** — Score ≥80% on Practice phase
 - 💎 **"Perfect Schedule"** — Score 10/10 in any world
 - 🔥 **"Streak Star"** — Achieve a streak of 10 consecutive correct answers
 - 🌍 **"Global Explorer"** — Complete all 6 phases (lesson complete badge)
