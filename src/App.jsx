@@ -158,7 +158,7 @@ export function App() {
       />
 
       {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col items-center">
+      <main className="relative z-10 flex-1 max-w-[1400px] w-full mx-auto p-4 md:p-8 lg:p-10 flex flex-col items-center">
         {state.phase === 'intro' && (
           <IntroScreen
             onStart={() => dispatch({ type: 'SET_PHASE', payload: 'wonder' })}

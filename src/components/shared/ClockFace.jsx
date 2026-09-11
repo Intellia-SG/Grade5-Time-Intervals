@@ -23,10 +23,10 @@ export function ClockFace({
   const hourAngle = ((hours24 % 12) + mins / 60) * 30; // 360 deg / 12 hr
 
   const sizePx = {
-    sm: 140,
-    md: 200,
-    lg: 260
-  }[size] || 200;
+    sm: 145,
+    md: 220,
+    lg: 280
+  }[size] || 220;
 
   // Handle interaction for dragging hands or clicking clock face
   const handleClockClick = (e) => {
@@ -148,14 +148,14 @@ export function ClockFace({
 
       {/* Digital Sub-Display Pill (positioned cleanly below the dial) */}
       {showDigitalPill && (
-        <div className="mt-2 bg-slate-900/90 border border-slate-700 text-teal-300 font-mono text-xs md:text-sm font-bold px-3 py-1 rounded-full shadow whitespace-nowrap">
+        <div className="mt-2.5 bg-slate-900/90 border border-slate-700 text-teal-300 font-mono text-sm md:text-base font-extrabold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
           {displayTime}
         </div>
       )}
 
       {/* Optional Custom Outer Label */}
       {label && (
-        <span className="mt-1 text-xs md:text-sm font-bold text-slate-300 tracking-wide text-center whitespace-nowrap">
+        <span className="mt-1.5 text-sm md:text-base font-extrabold text-slate-200 tracking-wide text-center whitespace-nowrap font-fredoka">
           {label}
         </span>
       )}

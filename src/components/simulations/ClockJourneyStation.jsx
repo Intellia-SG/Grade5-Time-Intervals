@@ -55,42 +55,42 @@ export function ClockJourneyStation({ onCompleteStation, format = '12h' }) {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-6 py-4">
+    <div className="w-full flex flex-col items-center gap-8 py-2">
       {/* Header Info */}
-      <div className="text-center max-w-xl">
-        <span className="text-xs uppercase tracking-widest font-extrabold text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-800">
+      <div className="text-center max-w-3xl flex flex-col items-center gap-2">
+        <span className="text-xs md:text-sm uppercase tracking-widest font-extrabold text-cyan-400 bg-cyan-950/70 px-4 py-1.5 rounded-full border border-cyan-800 shadow">
           Station A — Concrete Exploration ({roundIdx + 1}/{rounds.length})
         </span>
-        <h3 className="text-lg md:text-xl font-bold font-fredoka text-white mt-2">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-fredoka text-white tracking-tight">
           {currentRound.label}
         </h3>
       </div>
 
-      <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center">
         {/* Clock Faces comparison */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl">
           <ClockFace
             minutes={currentRound.startMins}
             label="Start Time"
-            size="sm"
+            size="md"
             format={format}
           />
-          <ArrowRight className="w-6 h-6 text-teal-400 hidden sm:block" />
+          <ArrowRight className="w-8 h-8 text-teal-400 hidden sm:block shrink-0" />
           <ClockFace
             minutes={currentEndMinutes}
             label="Current Time"
-            size="sm"
+            size="md"
             highlighted={addedMinutes !== 0}
             format={format}
           />
         </div>
 
         {/* Mascot & Controls */}
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-5 w-full">
           <Mascot
             mood={feedback?.type === 'success' ? 'happy' : feedback?.type === 'error' ? 'thinking' : 'encouraging'}
             message={feedback?.text || `Target Duration: ${formatDuration(currentRound.targetDuration)}`}
-            size="md"
+            size="lg"
           />
 
           <TimelineBar
@@ -103,18 +103,18 @@ export function ClockJourneyStation({ onCompleteStation, format = '12h' }) {
           <DurationBlockTray onAddBlock={handleAddBlock} />
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-3 w-full max-w-xs">
+          <div className="flex items-center gap-4 w-full max-w-md pt-2">
             <button
               onClick={handleReset}
-              className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm border border-slate-700 flex items-center justify-center gap-1.5 transition"
+              className="py-3.5 px-6 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-extrabold text-base border border-slate-700 flex items-center justify-center gap-2 transition shadow-lg"
             >
-              <RotateCcw className="w-4 h-4" /> Reset
+              <RotateCcw className="w-5 h-5" /> Reset
             </button>
             <button
               onClick={handleSubmit}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-bold text-sm shadow-lg border border-teal-300 flex items-center justify-center gap-1.5 transition"
+              className="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black font-fredoka text-base md:text-lg shadow-xl border border-teal-300 flex items-center justify-center gap-2 transition transform hover:scale-102"
             >
-              <CheckCircle className="w-4 h-4" /> Submit Journey
+              <CheckCircle className="w-5 h-5" /> Submit Journey
             </button>
           </div>
         </div>

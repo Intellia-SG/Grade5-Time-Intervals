@@ -25,19 +25,19 @@ export function SimulatePhase({ onNext, onUpdateStations, completedStations = [f
   const allComplete = completedStations.every(Boolean);
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-6 py-6 px-4">
+    <div className="w-full max-w-[1350px] mx-auto flex flex-col items-center gap-6 py-4 px-2 md:px-4">
       {/* Header */}
-      <div className="flex flex-col items-center gap-2 text-center">
-        <span className="bg-amber-500/10 border border-amber-500/30 text-amber-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 shadow">
+      <div className="flex flex-col items-center gap-2.5 text-center">
+        <span className="bg-amber-500/10 border border-amber-500/30 text-amber-300 px-5 py-1.5 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest flex items-center gap-2 shadow">
           <Sparkles className="w-4 h-4 text-amber-400" /> Phase 3 — SIMULATION LAB
         </span>
-        <h2 className="text-2xl md:text-3xl font-bold font-fredoka text-white">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black font-fredoka text-white tracking-tight">
           Hands-on Time Interval Explorations
         </h2>
       </div>
 
       {/* Station Navigation Tabs */}
-      <div className="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-xl overflow-x-auto">
+      <div className="flex items-center gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800 shadow-2xl overflow-x-auto max-w-full">
         {[
           { id: 0, title: 'Station A: Clock Journey', mode: 'Concrete' },
           { id: 1, title: 'Station B: Spot Duration', mode: 'Pictorial' },
@@ -53,21 +53,21 @@ export function SimulatePhase({ onNext, onUpdateStations, completedStations = [f
                 playSFX('click');
                 setActiveStation(st.id);
               }}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm md:text-base font-extrabold transition-all ${
                 isActive
                   ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 shadow-lg scale-102 font-fredoka'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
               <span>{st.title}</span>
-              {isDone && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
+              {isDone && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
             </button>
           );
         })}
       </div>
 
       {/* Active Station Display */}
-      <div className="w-full glass-panel rounded-3xl p-4 md:p-6 border border-slate-800 shadow-2xl">
+      <div className="w-full glass-panel rounded-3xl p-6 md:p-8 lg:p-10 border border-slate-800 shadow-2xl">
         {activeStation === 0 && (
           <ClockJourneyStation
             onCompleteStation={() => handleStationComplete(0)}

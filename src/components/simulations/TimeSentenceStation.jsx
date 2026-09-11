@@ -94,21 +94,21 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-6 py-4">
+    <div className="w-full flex flex-col items-center gap-8 py-2">
       {/* Header Info */}
-      <div className="text-center max-w-xl">
-        <span className="text-xs uppercase tracking-widest font-extrabold text-amber-400 bg-amber-950/60 px-3 py-1 rounded-full border border-amber-800">
+      <div className="text-center max-w-3xl flex flex-col items-center gap-2">
+        <span className="text-xs md:text-sm uppercase tracking-widest font-extrabold text-amber-400 bg-amber-950/70 px-4 py-1.5 rounded-full border border-amber-800 shadow">
           Station C — Abstract Time Equation ({roundIdx + 1}/{rounds.length})
         </span>
-        <h3 className="text-lg md:text-xl font-bold font-fredoka text-white mt-2">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-fredoka text-white tracking-tight">
           {currentRound.label}
         </h3>
       </div>
 
       {/* Equation Banner */}
-      <div className="w-full max-w-2xl glass-panel rounded-2xl p-5 border border-amber-500/30 flex flex-wrap items-center justify-center gap-3 font-mono text-base md:text-xl font-bold shadow-xl">
+      <div className="w-full max-w-4xl glass-panel rounded-3xl p-6 border-2 border-amber-500/40 flex flex-wrap items-center justify-center gap-4 font-mono text-lg md:text-2xl lg:text-3xl font-black shadow-2xl">
         {/* Start slot */}
-        <div className={`px-3 py-2 rounded-xl border ${
+        <div className={`px-4 py-3 rounded-2xl border-2 ${
           currentRound.missingSlot === 'start'
             ? 'bg-amber-500/20 border-amber-400 text-amber-300 font-extrabold animate-pulse'
             : 'bg-slate-900 border-slate-700 text-cyan-300'
@@ -116,10 +116,10 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
           Start: {currentRound.missingSlot === 'start' ? (inputValue || '___') : formatTimeDisplay(currentRound.startMins, format)}
         </div>
 
-        <span className="text-amber-400 text-2xl">+</span>
+        <span className="text-amber-400 text-3xl font-black">+</span>
 
         {/* Duration slot */}
-        <div className={`px-3 py-2 rounded-xl border ${
+        <div className={`px-4 py-3 rounded-2xl border-2 ${
           currentRound.missingSlot === 'duration'
             ? 'bg-amber-500/20 border-amber-400 text-amber-300 font-extrabold animate-pulse'
             : 'bg-slate-900 border-slate-700 text-teal-300'
@@ -127,10 +127,10 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
           Duration: {currentRound.missingSlot === 'duration' ? (inputValue || '___') : formatDuration(currentRound.durMins)}
         </div>
 
-        <span className="text-amber-400 text-2xl">=</span>
+        <span className="text-amber-400 text-3xl font-black">=</span>
 
         {/* End slot */}
-        <div className={`px-3 py-2 rounded-xl border ${
+        <div className={`px-4 py-3 rounded-2xl border-2 ${
           currentRound.missingSlot === 'end'
             ? 'bg-amber-500/20 border-amber-400 text-amber-300 font-extrabold animate-pulse'
             : 'bg-slate-900 border-slate-700 text-emerald-300'
@@ -139,25 +139,25 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-6 w-full max-w-2xl justify-center">
+      <div className="flex flex-col items-center gap-6 w-full max-w-3xl justify-center">
         <Mascot
           mood={feedback?.type === 'success' ? 'happy' : feedback?.type === 'error' ? 'thinking' : 'encouraging'}
           message={feedback?.text || "Choose or enter the value that fills the blank!"}
-          size="md"
+          size="lg"
         />
 
         {/* Choice Buttons for quick & accurate selection */}
-        <div className="grid grid-cols-2 gap-3 w-full">
+        <div className="grid grid-cols-2 gap-4 w-full">
           {currentRound.options.map((opt, idx) => {
             const isSelected = inputValue === opt;
             return (
               <button
                 key={idx}
                 onClick={() => handleSelectOption(opt)}
-                className={`py-3.5 px-4 rounded-xl border font-mono font-bold text-base transition-all duration-200 ${
+                className={`py-4 px-6 rounded-2xl border-2 font-mono font-black text-lg md:text-xl transition-all duration-200 shadow-lg ${
                   isSelected
-                    ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-2 ring-amber-400/50 shadow-lg scale-102'
-                    : 'bg-slate-900/80 border-slate-700 hover:border-slate-500 text-slate-100'
+                    ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-4 ring-amber-400/40 scale-102'
+                    : 'bg-slate-900/90 border-slate-700 hover:border-slate-500 text-slate-100'
                 }`}
               >
                 {opt}
@@ -168,7 +168,7 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
 
         <button
           onClick={() => setShowHint(!showHint)}
-          className="text-xs text-cyan-300 hover:underline flex items-center gap-1 font-bold bg-slate-900 px-3 py-1.5 rounded-full border border-slate-700"
+          className="text-xs md:text-sm text-cyan-300 hover:underline flex items-center gap-1.5 font-bold bg-slate-900 px-4 py-2 rounded-full border border-slate-700 shadow"
         >
           <HelpCircle className="w-4 h-4 text-cyan-400" /> {showHint ? "Hide Timeline Hint" : "Show Timeline Hint"}
         </button>
@@ -186,9 +186,9 @@ export function TimeSentenceStation({ onCompleteStation, format = '12h' }) {
       <button
         onClick={handleSubmit}
         disabled={!inputValue}
-        className="w-full max-w-xs py-3 px-6 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-bold text-base shadow-xl border border-teal-300 flex items-center justify-center gap-2 transition disabled:opacity-50"
+        className="w-full max-w-md py-4 px-8 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black font-fredoka text-lg md:text-xl shadow-2xl border border-teal-300 flex items-center justify-center gap-2 transition disabled:opacity-50 transform hover:scale-102"
       >
-        <CheckCircle className="w-5 h-5" /> Confirm Equation
+        <CheckCircle className="w-6 h-6" /> Confirm Equation
       </button>
     </div>
   );

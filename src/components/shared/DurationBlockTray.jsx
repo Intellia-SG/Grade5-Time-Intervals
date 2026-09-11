@@ -32,53 +32,53 @@ export function DurationBlockTray({ onAddBlock, disabled = false, className = ''
   const activeBlocks = mode === 'add' ? addBlocks : subBlocks;
 
   return (
-    <div className={`w-full glass-panel rounded-2xl p-4 border border-slate-700/70 flex flex-col items-center gap-3 ${className}`}>
+    <div className={`w-full glass-panel rounded-2xl p-5 border border-slate-700/80 flex flex-col items-center gap-4 shadow-xl ${className}`}>
       {/* Mode Toggle Bar (+ Add / - Subtract) */}
-      <div className="flex items-center justify-between w-full flex-wrap gap-2">
-        <span className="text-xs uppercase tracking-wider font-bold text-teal-300 flex items-center gap-1.5">
-          <Clock className="w-4 h-4" /> Tap Duration Blocks to Modify Time
+      <div className="flex items-center justify-between w-full flex-wrap gap-3">
+        <span className="text-xs md:text-sm uppercase tracking-wider font-extrabold text-teal-300 flex items-center gap-2">
+          <Clock className="w-4 h-4 md:w-5 md:h-5 text-teal-400" /> Tap Duration Blocks to Modify Time
         </span>
 
-        <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
+        <div className="flex items-center bg-slate-900 p-1.5 rounded-xl border border-slate-800">
           <button
             onClick={() => {
               playSFX('click');
               setMode('add');
             }}
-            className={`px-3 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 ${
+            className={`px-4 py-1.5 rounded-lg text-xs md:text-sm font-extrabold transition flex items-center gap-1.5 ${
               mode === 'add'
-                ? 'bg-emerald-500 text-slate-950 shadow'
+                ? 'bg-emerald-500 text-slate-950 shadow-md'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Plus className="w-3.5 h-3.5" /> Add (+)
+            <Plus className="w-4 h-4" /> Add (+)
           </button>
           <button
             onClick={() => {
               playSFX('click');
               setMode('subtract');
             }}
-            className={`px-3 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 ${
+            className={`px-4 py-1.5 rounded-lg text-xs md:text-sm font-extrabold transition flex items-center gap-1.5 ${
               mode === 'subtract'
-                ? 'bg-rose-500 text-white shadow'
+                ? 'bg-rose-500 text-white shadow-md'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Minus className="w-3.5 h-3.5" /> Subtract (-)
+            <Minus className="w-4 h-4" /> Subtract (-)
           </button>
         </div>
       </div>
 
       {/* Blocks Grid (6 Options) */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5 w-full">
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 w-full">
         {activeBlocks.map((b, idx) => (
           <button
             key={idx}
             onClick={() => handleTap(b.minutes)}
             disabled={disabled}
-            className={`py-3 px-2 rounded-xl bg-gradient-to-r ${b.color} border text-white font-bold font-mono text-xs md:text-sm shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-1`}
+            className={`py-4 px-3 rounded-2xl bg-gradient-to-r ${b.color} border-2 text-white font-black font-mono text-sm md:text-base shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-1.5`}
           >
-            {mode === 'add' ? <Plus className="w-3.5 h-3.5 shrink-0" /> : <Minus className="w-3.5 h-3.5 shrink-0" />}
+            {mode === 'add' ? <Plus className="w-4 h-4 shrink-0" /> : <Minus className="w-4 h-4 shrink-0" />}
             <span>{b.label}</span>
           </button>
         ))}

@@ -70,13 +70,13 @@ export function SpotDurationStation({ onCompleteStation, format = '12h' }) {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-6 py-4">
+    <div className="w-full flex flex-col items-center gap-5 py-2">
       {/* Header Info */}
-      <div className="text-center max-w-xl">
-        <span className="text-xs uppercase tracking-widest font-extrabold text-teal-400 bg-teal-950/60 px-3 py-1 rounded-full border border-teal-800">
+      <div className="text-center max-w-2xl flex flex-col items-center gap-1.5">
+        <span className="text-xs uppercase tracking-widest font-extrabold text-teal-400 bg-teal-950/70 px-3.5 py-1 rounded-full border border-teal-800 shadow">
           Station B — Pictorial Matching ({roundIdx + 1}/{rounds.length})
         </span>
-        <h3 className="text-lg md:text-xl font-bold font-fredoka text-white mt-2">
+        <h3 className="text-lg md:text-xl font-bold font-fredoka text-white tracking-tight">
           {currentRound.instruction}
         </h3>
       </div>
@@ -88,7 +88,7 @@ export function SpotDurationStation({ onCompleteStation, format = '12h' }) {
       />
 
       {/* 2x2 Grid of Clock Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full max-w-4xl">
         {currentRound.cards.map(card => {
           const isSelected = selectedCards.includes(card.id);
 
@@ -96,24 +96,24 @@ export function SpotDurationStation({ onCompleteStation, format = '12h' }) {
             <button
               key={card.id}
               onClick={() => handleCardClick(card.id)}
-              className={`p-4 rounded-2xl border transition-all duration-200 flex flex-col items-center gap-3 relative ${
+              className={`p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 flex flex-col items-center gap-3 relative ${
                 isSelected
-                  ? 'bg-teal-950/60 border-teal-400 ring-2 ring-teal-400/50 shadow-xl scale-102'
-                  : 'bg-slate-900/70 border-slate-800 hover:border-slate-600'
+                  ? 'bg-teal-950/80 border-teal-400 ring-2 ring-teal-400/50 shadow-xl scale-102'
+                  : 'bg-slate-900/80 border-slate-800 hover:border-slate-600 shadow-lg'
               }`}
             >
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-3.5 w-full">
                 <ClockFace minutes={card.start} size="sm" format={format} label="Before" />
-                <span className="text-slate-500 font-bold">→</span>
+                <span className="text-teal-400 font-extrabold text-xl">→</span>
                 <ClockFace minutes={card.end} size="sm" format={format} label="After" />
               </div>
 
-              <div className="bg-slate-950 border border-slate-700 px-4 py-1.5 rounded-full text-xs font-mono font-bold text-cyan-300">
+              <div className="bg-slate-950 border border-slate-700 px-4 py-1 rounded-full text-xs md:text-sm font-mono font-bold text-cyan-300 shadow">
                 Claimed: {card.claimed}
               </div>
 
               {isSelected && (
-                <div className="absolute top-3 right-3 bg-teal-500 text-slate-950 p-1 rounded-full shadow">
+                <div className="absolute top-3 right-3 bg-teal-500 text-slate-950 p-1 rounded-full shadow-md">
                   <Check className="w-4 h-4 stroke-[3]" />
                 </div>
               )}
@@ -124,7 +124,7 @@ export function SpotDurationStation({ onCompleteStation, format = '12h' }) {
 
       <button
         onClick={handleSubmit}
-        className="w-full max-w-xs py-3 px-6 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-bold text-base shadow-xl border border-teal-300 flex items-center justify-center gap-2 transition"
+        className="w-full max-w-sm py-3 px-6 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black font-fredoka text-base shadow-xl border border-teal-300 flex items-center justify-center gap-2 transition transform hover:scale-102"
       >
         <CheckCircle2 className="w-5 h-5" /> Submit Selection
       </button>

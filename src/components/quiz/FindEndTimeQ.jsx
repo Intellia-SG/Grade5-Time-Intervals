@@ -7,9 +7,9 @@ export function FindEndTimeQ({ question, onSelectAnswer, selectedOption, disable
   return (
     <div className="w-full flex flex-col items-center gap-6">
       {/* Visual Scaffolding */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-full">
         {question.startMinutes !== undefined && (
-          <ClockFace minutes={question.startMinutes} label="Start Time" size="md" format={format} />
+          <ClockFace minutes={question.startMinutes} label="Start Time" size="sm" format={format} />
         )}
         {question.startMinutes !== undefined && question.durationMinutes !== undefined && (
           <TimelineBar

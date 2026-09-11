@@ -64,50 +64,50 @@ export function StoryPhase({ onNext, audioEnabled = true, format = '12h' }) {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-5 py-4 px-4">
+    <div className="w-full max-w-[1350px] mx-auto flex flex-col items-center gap-6 py-4 px-2 md:px-4">
       {/* Story Card Container */}
       <div className="w-full bg-[#161845] border-2 border-[#373c85] rounded-3xl shadow-2xl overflow-hidden flex flex-col">
         {/* Top Artwork Scene Image */}
-        <div className="w-full h-72 md:h-80 relative border-b-2 border-[#373c85]">
+        <div className="w-full h-80 md:h-[400px] relative border-b-2 border-[#373c85]">
           <StoryIllustration panelId={currentPanel.id} />
         </div>
 
         {/* Bottom Content Area */}
-        <div className="p-6 md:p-8 flex flex-col gap-6 text-left">
+        <div className="p-8 md:p-10 flex flex-col gap-6 text-left">
           {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-black font-fredoka text-amber-400 flex items-center gap-3 drop-shadow-md tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black font-fredoka text-amber-400 flex items-center gap-4 drop-shadow-md tracking-tight">
             <span>{currentPanel.title}</span>
-            <span className="text-4xl">{currentPanel.flag}</span>
+            <span className="text-5xl">{currentPanel.flag}</span>
           </h2>
 
           {/* Prominent High-Visibility Narrative Box */}
-          <div className="bg-[#08091e] border-2 border-amber-400/60 rounded-3xl p-6 md:p-8 shadow-2xl shadow-amber-500/10">
-            <p className="text-xl md:text-2xl lg:text-3xl font-black text-white leading-relaxed tracking-wide font-fredoka drop-shadow">
+          <div className="bg-[#08091e] border-2 border-amber-400/70 rounded-3xl p-8 md:p-10 shadow-2xl shadow-amber-500/10">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-relaxed tracking-wide font-fredoka drop-shadow-lg">
               "{renderFormattedStoryText(currentPanel.text)}"
             </p>
           </div>
 
           {/* Mascot Companion Badge */}
-          <div className="flex items-center gap-3 bg-[#0c0e2b] border border-[#2e337d] rounded-2xl p-4 shadow-lg">
-            <Mascot mood={panelIdx === 5 ? 'celebrate' : 'happy'} size="sm" />
-            <span className="text-sm md:text-base font-extrabold text-amber-300 flex-1 font-fredoka">
+          <div className="flex items-center gap-4 bg-[#0c0e2b] border border-[#2e337d] rounded-2xl p-5 shadow-lg">
+            <Mascot mood={panelIdx === 5 ? 'celebrate' : 'happy'} size="md" />
+            <span className="text-base md:text-lg font-extrabold text-amber-300 flex-1 font-fredoka">
               Panel {panelIdx + 1} of 6 — {currentPanel.character} ({currentPanel.location})
             </span>
           </div>
 
           {/* Bottom Navigation Row */}
-          <div className="flex items-center justify-between pt-3 border-t border-[#2e337d]/60 mt-1">
+          <div className="flex items-center justify-between pt-4 border-t border-[#2e337d]/60 mt-2">
             {/* Back Button */}
             <button
               onClick={handlePrev}
               disabled={panelIdx === 0}
-              className="py-2.5 px-6 rounded-full bg-[#12143b] hover:bg-[#232766] disabled:opacity-40 font-bold text-xs md:text-sm border border-[#2e337d] text-slate-300 transition"
+              className="py-3 px-8 rounded-full bg-[#12143b] hover:bg-[#232766] disabled:opacity-40 font-extrabold text-sm md:text-base border border-[#2e337d] text-slate-300 transition shadow"
             >
               ‹ Back
             </button>
 
             {/* Dots & Counter */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               {STORY_PANELS.map((_, i) => (
                 <button
                   key={i}
@@ -115,12 +115,12 @@ export function StoryPhase({ onNext, audioEnabled = true, format = '12h' }) {
                     playSFX('click');
                     setPanelIdx(i);
                   }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    i === panelIdx ? 'bg-amber-400 scale-125 ring-2 ring-amber-300/50' : 'bg-slate-700'
+                  className={`w-3.5 h-3.5 rounded-full transition-all ${
+                    i === panelIdx ? 'bg-amber-400 scale-125 ring-4 ring-amber-300/40' : 'bg-slate-700'
                   }`}
                 />
               ))}
-              <span className="text-xs font-mono font-bold text-slate-300 ml-1">
+              <span className="text-sm font-mono font-extrabold text-slate-300 ml-2">
                 {panelIdx + 1}/{STORY_PANELS.length}
               </span>
             </div>
@@ -128,7 +128,7 @@ export function StoryPhase({ onNext, audioEnabled = true, format = '12h' }) {
             {/* Next / Finish Button */}
             <button
               onClick={handleNextPanel}
-              className="py-2.5 px-6 rounded-full btn-journey text-slate-950 font-black font-fredoka text-xs md:text-sm shadow-lg hover:scale-105 transition"
+              className="py-3 px-8 rounded-full btn-journey text-slate-950 font-black font-fredoka text-sm md:text-base shadow-xl hover:scale-105 transition"
             >
               {panelIdx === STORY_PANELS.length - 1 ? 'Start Simulations ➔' : 'Next ➔'}
             </button>

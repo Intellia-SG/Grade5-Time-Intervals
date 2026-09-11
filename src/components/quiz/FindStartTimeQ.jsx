@@ -10,9 +10,9 @@ export function FindStartTimeQ({ question, onSelectAnswer, selectedOption, disab
 
   return (
     <div className="w-full flex flex-col items-center gap-6">
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-full">
         {question.endMinutes !== undefined && (
-          <ClockFace minutes={question.endMinutes} label="End Time" size="md" format={format} />
+          <ClockFace minutes={question.endMinutes} label="End Time" size="sm" format={format} />
         )}
         {question.endMinutes !== undefined && question.durationMinutes !== undefined && (
           <TimelineBar
